@@ -31,3 +31,14 @@ h2 {
     border-bottom: 2px solid #3498db;
     padding-bottom: 5px;
 }
+/* Mobile Responsive Adjustments */
+@media (max-width: 600px) {
+    header {
+        padding: 1rem;
+    }
+    
+    section {
+        margin: 10px;
+        width: auto;
+    }
+}
