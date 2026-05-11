@@ -9,49 +9,136 @@
 <body>
 
     <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <ul class="nav-links">
+            <li><a href="#about" data-key="nav_about">About</a></li>
+            <li><a href="#projects" data-key="nav_projects">Projects</a></li>
+            <li><a href="#experience" data-key="nav_experience">Experience</a></li>
+            <li><a href="#education" data-key="nav_education">Education</a></li>
+            <li><a href="#certifications" data-key="nav_certifications">Certifications</a></li>
+            <li><a href="#skills" data-key="nav_skills">Skills</a></li>
+            <li><a href="#contact" data-key="nav_contact">Contact</a></li>
         </ul>
+        <div class="nav-controls">
+            <button id="lang-toggle" class="control-btn">EN</button>
+            <button id="dark-mode-toggle" class="control-btn">🌙 Dark</button>
+        </div>
     </nav>
 
     <header>
-        <h1>Ayoub Hemmou</h1>
-        <p>L2 Computer Science Student | Python Developer</p>
-        <button id="dark-mode-toggle">🌙 Dark Mode</button>
+        <img src="profile.png" alt="Ayoub Hemmou" class="profile-pic">
+        <div class="header-text">
+            <h1>Ayoub Hemmou</h1>
+            <p data-key="header_subtitle">L2 Computer Science Student | Python Developer</p>
+        </div>
     </header>
 
     <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am a motivated developer based in Orléans, looking for an apprenticeship for September 2026. [cite: 9, 11]</p>
-        </section>
-
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project-card">
-                <strong>Website Health Monitor:</strong> 
-                <p>A Python tool that sends WhatsApp alerts via Twilio and Discord. [cite: 13, 15]</p>
-                <a href="https://github.com/ah-hub200/website-health-monitor" target="_blank">View on GitHub [cite: 6]</a>
+        <section id="about" class="reveal">
+            <h2 data-key="about_title">About Me</h2>
+            <div class="card">
+                <p data-key="about_p1">Hello, I'm Ayoub. As an L2 Computer Science student at the University of Orléans, I am passionate about software development, backend automation, and solving complex logic problems.</p>
+                <p data-key="about_p2">Before dedicating myself fully to tech, I built my professional rigor, stress management, and sense of responsibility in demanding, high-paced environments (Auchan, KFC). Today, I combine this proven work ethic with my technical foundation in Python, C, SQL, and UNIX.</p>
+                <p><strong><span data-key="about_p3">I am actively seeking a Computer Science Apprenticeship (Alternance) starting in September 2026.</span></strong></p>
             </div>
         </section>
 
-        <section id="certifications">
-            <h2>Certifications</h2>
-            <div class="cert-card">
-                <h3>Google Crash Course on Python</h3>
-                <img src="google-python-cert.jpg" alt="Google Python Certificate">
-                <p>Issued by Google via Coursera [cite: 43, 44]</p>
-                <a href="https://coursera.org/verify/NNURF240771C" target="_blank" class="verify-btn">Verify Online [cite: 55]</a>
+        <section id="projects" class="reveal">
+            <h2 data-key="nav_projects">Projects</h2>
+            
+            <div class="card project-card">
+                <h3 data-key="proj1_title">Featured Project: Website Health Monitor</h3>
+                <p data-key="proj1_desc">An automated Python tool designed to monitor web server uptime and analyze HTTP status codes in real-time.</p>
+                <ul>
+                    <li data-key="proj1_f1"><strong>Multi-Channel Alerting:</strong> Engineered an automated notification system integrating Discord (Webhooks) and WhatsApp (Twilio API).</li>
+                    <li data-key="proj1_f2"><strong>Compliance & Architecture:</strong> Researched and implemented ARCEP regulations regarding A2P WhatsApp traffic routing.</li>
+                    <li data-key="proj1_f3"><strong>Security:</strong> Secured sensitive credentials and API keys using environment variables (.env).</li>
+                </ul>
+                <a href="https://github.com/ah-hub200/website-health-monitor" target="_blank" class="btn">View on GitHub</a>
+            </div>
+
+            <div class="card project-card">
+                <h3 data-key="proj2_title">Project: Personal Interactive Portfolio</h3>
+                <p data-key="proj2_desc">Designed and developed this responsive website from scratch to showcase my technical background.</p>
+                <ul>
+                    <li data-key="proj2_f1"><strong>Dynamic UI:</strong> Implemented a persistent "Dark Mode" toggle using JavaScript DOM manipulation.</li>
+                    <li data-key="proj2_f2"><strong>Bilingual Architecture:</strong> Engineered a dynamic English/French translation system using a JSON dictionary.</li>
+                    <li data-key="proj2_f3"><strong>UX:</strong> Integrated smooth scroll animations using the Intersection Observer API.</li>
+                </ul>
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>Email: <a href="mailto:hemmouayoub50@gmail.com">hemmouayoub50@gmail.com [cite: 5]</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/ayoub-hemmou" target="_blank">View Profile</a></p>
+        <section id="experience" class="reveal">
+            <h2 data-key="nav_experience">Experience</h2>
+            <div class="card border-left-blue">
+                <h3 data-key="exp_subtitle">Retail & Customer Operations</h3>
+                <p><strong>Auchan, KFC, Carrefour</strong> | 2023 - <span data-key="edu_present">Present</span></p>
+                <ul>
+                    <li data-key="exp_p1"><strong>Rigor & Precision:</strong> Managed high-volume financial transactions and executed high-accuracy inventory scanning.</li>
+                    <li data-key="exp_p2"><strong>Responsibility:</strong> Entrusted with store opening/closing procedures and high-paced production management.</li>
+                    <li data-key="exp_p3"><strong>Soft Skills:</strong> Demonstrated strong stress management, customer relations, and teamwork in demanding environments.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education" class="reveal">
+            <h2 data-key="nav_education">Education</h2>
+            <div class="card border-left-blue">
+                <h3 data-key="edu_degree">Computer Science Degree (Seeking Apprenticeship)</h3>
+                <p><strong>Université d'Orléans</strong> | 2025 - <span data-key="edu_present">Present</span></p>
+                <ul>
+                    <li data-key="edu_p1"><strong>Academic Path:</strong> Successfully transitioned from an L1 Math & Computer Science portal into a specialized L2 Computer Science major.</li>
+                    <li data-key="edu_p2"><strong>Core IT:</strong> Algorithmics, data structures, Python, C programming, Database Foundations (SQL), and UNIX System Practice.</li>
+                    <li data-key="edu_p3"><strong>Applied Mathematics:</strong> Discrete mathematics, linear algebra, logic, and computer architecture.</li>
+                </ul>
+            </div>
+        </section>
+       <section id="certifications" class="reveal">
+            <h2 data-key="nav_certifications">Certifications</h2>
+            <div class="card border-left-blue">
+                <h3 data-key="cert_title">Google IT Automation with Python</h3>
+                <p><strong>Coursera</strong> | <span data-key="cert_date">April 2026</span></p>
+                <ul>
+                    <li data-key="cert_p1"><strong>Crash Course on Python:</strong> Mastered Object-Oriented Programming (OOP), complex data structures, and file manipulation.</li>
+                    <li data-key="cert_p2"><strong>Validation:</strong> Official Google certification proving production-ready Python skills.</li>
+                </ul>
+                <br>
+                <a href="https://www.coursera.org/account/accomplishments/verify/NNURF240771C" target="_blank" class="btn" data-key="cert_btn">View Certificate</a>
+            </div>
+        </section>
+        <section id="skills" class="reveal">
+            <h2 data-key="nav_skills">Skills</h2>
+            <div class="skills-grid">
+                <div class="card skill-category">
+                    <h3 data-key="skill_sys_title">🖥️ System & Architecture</h3>
+                    <ul>
+                        <li data-key="skill_sys_1"><strong>Linux/UNIX:</strong> Bash scripting, CLI tools, File permissions</li>
+                        <li data-key="skill_sys_2"><strong>Hardware:</strong> Computer architecture, Boolean logic, Binary arithmetic</li>
+                    </ul>
+                </div>
+                <div class="card skill-category">
+                    <h3 data-key="skill_data_title">💾 Data & Databases</h3>
+                    <ul>
+                        <li data-key="skill_data_1"><strong>SQL:</strong> Relational database design, Complex queries</li>
+                        <li data-key="skill_data_2"><strong>Modeling:</strong> Entity-Relationship models (MCD/MLD)</li>
+                    </ul>
+                </div>
+                <div class="card skill-category">
+                    <h3 data-key="skill_prog_title">⚙️ Programming & Logic</h3>
+                    <ul>
+                        <li data-key="skill_prog_1"><strong>Languages:</strong> Python (Google Certified), C, HTML/CSS/JS</li>
+                        <li data-key="skill_prog_2"><strong>Core CS:</strong> Algorithm design, Data structures, Graph theory</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="reveal">
+            <h2 data-key="nav_contact">Contact</h2>
+            <div class="card text-center">
+                <p>📧 <strong data-key="contact_email">Email:</strong> <a href="mailto:hemmouayoub50@gmail.com">hemmouayoub50@gmail.com</a></p>
+                <p>📞 <strong data-key="contact_phone">Phone:</strong> <a href="tel:+33627390976">06 27 39 09 76</a></p>
+                <p>💻 <strong>GitHub:</strong> <a href="https://github.com/ah-hub200" target="_blank">ah-hub200</a></p>
+            </div>
         </section>
     </main>
 
