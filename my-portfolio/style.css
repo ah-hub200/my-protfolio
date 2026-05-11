@@ -1,60 +1,19 @@
+/* 1. Global Reset & Smooth Scroll */
 html {
     scroll-behavior: smooth;
-}/* General Styles */
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-/* Header/Hero Section */
-header {
-    background: #2c3e50;
-    color: #ffffff;
-    padding: 2rem;
-    text-align: center;
-}
-
-/* Sections */
-section {
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-}
-/* Mobile Responsive Adjustments */
-@media (max-width: 600px) {
-    header {
-        padding: 1rem;
-    }
-    
-    section {
-        margin: 10px;
-        width: auto;
-    }
-}
-/* General Layout */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
     color: #333;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition! */
 }
 
-/* Navigation Bar */
+/* 2. Navigation */
 nav {
     background: #2c3e50;
     padding: 1rem 0;
@@ -68,84 +27,77 @@ nav ul {
     display: flex;
     justify-content: center;
     margin: 0;
-    padding: 0;
 }
 
-nav ul li {
-    margin: 0 20px;
-}
+nav ul li { margin: 0 15px; }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    color: #3498db;
-}
-
-/* Header */
+/* 3. Header */
 header {
-    background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('your-background.jpg');
-    background-size: cover;
+    background: #2c3e50;
     color: white;
     padding: 60px 20px;
     text-align: center;
 }
 
-/* Main Sections */
+/* 4. Sections */
 section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 h2 {
     color: #2c3e50;
     border-bottom: 3px solid #3498db;
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-/* Project & Cert Cards */
-.cert-card, li {
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    margin-bottom: 10px;
+.cert-card img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    display: block;
+    margin: 15px 0;
 }
 
-/* Contact Styling */
-#contact p {
-    font-size: 1.1rem;
+/* 5. Dark Mode Styles */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
-#contact a {
-    color: #3498db;
-    text-decoration: none;
+body.dark-theme section {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+body.dark-theme h2 { color: #3498db; }
+
+/* 6. Button Styling */
+#dark-mode-toggle {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
     font-weight: bold;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #7f8c8d;
-    font-size: 0.9rem;
-}
-
-/* Mobile Responsive */
+/* 7. Responsive */
 @media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    nav ul li {
-        margin: 5px 0;
-    }
+    nav ul { flex-direction: column; align-items: center; }
+    section { margin: 15px; }
 }
