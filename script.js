@@ -59,7 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
             "cert_p2": "Validation: Official Google certification proving production-ready Python skills.",
             "cert_btn": "View Certificate",
             "contact_email": "Email:",
-            "contact_phone": "Phone:"
+            "contact_phone": "Phone:",
+            "header_name": "Ayoub Hemmou",
+            "header_subtitle": "Computer Science Student | Seeking Alternance Sept 2026",
+            "about_text": "I am currently finishing my 1st year of Math & Computer Science at Université d'Orléans. Passionate about software engineering, I am transitioning to a specialized Tech School for my 2nd year to accelerate my professional growth. I am actively seeking a work-study contract (Alternance) starting September 2026 to apply my skills in Python, C, and Web Development to real-world projects.",
+            "edu_l2_title": "2nd Year Computer Science (Seeking Alternance)",
+            "edu_l2_school": "Private Tech School (Admission in Progress)",
+            "edu_l2_p1": "Preparation for a Bac+2 equivalent degree (RNCP Level 5).",
+            "edu_l2_p2": "Actively seeking a work-study contract (Alternance).",
+            "edu_l1_title": "1st Year Math & Computer Science",
+            "edu_l1_school": "Université d'Orléans",
+            "edu_l1_p1": "Track: Successful transition from a Math-Info portal to a CS specialization.",
+            "edu_l1_p2": "Core IT: Algorithms, Data Structures, Python, C Language, Databases (SQL), and UNIX.",
+            "edu_l1_p3": "Applied Math: Discrete Mathematics, Linear Algebra, Logic, and Computer Architecture."
         },
         "fr": {
             "nav_about": "À propos", "nav_projects": "Projets", "nav_experience": "Expérience", 
@@ -104,7 +116,19 @@ document.addEventListener('DOMContentLoaded', () => {
             "cert_p2": "Validation : Certification officielle Google attestant de compétences Python prêtes pour le monde de l'entreprise.",
             "cert_btn": "Voir le certificat",
             "contact_email": "Email :",
-            "contact_phone": "Téléphone :"
+            "contact_phone": "Téléphone :",
+            "header_name": "Ayoub Hemmou",
+            "header_subtitle": "Étudiant en Informatique | Recherche Alternance Sept 2026",
+            "about_text": "Je termine actuellement ma 1ère année de Licence Math-Informatique à l'Université d'Orléans. Passionné par le développement logiciel, j'intègre une école d'informatique pour ma 2ème année (équivalent Bac+2) afin d'accélérer ma professionnalisation. Je recherche activement une alternance pour septembre 2026 afin de mettre mes compétences (Python, C, Web) au service de projets concrets en entreprise.",
+            "edu_l2_title": "2ème année d'Informatique (Recherche d'Alternance)",
+            "edu_l2_school": "École d'Informatique (Admission en cours)",
+            "edu_l2_p1": "Préparation d'un diplôme équivalent Bac+2 / Titre RNCP niveau 5.",
+            "edu_l2_p2": "Recherche active d'un contrat d'alternance.",
+            "edu_l1_title": "Licence 1 Math-Informatique",
+            "edu_l1_school": "Université d'Orléans",
+            "edu_l1_p1": "Parcours : Transition réussie d'un portail L1 Math-Info vers une spécialisation en Informatique.",
+            "edu_l1_p2": "Cœur Informatique : Algorithmique, structures de données, Python, Langage C, bases de données (SQL) et UNIX.",
+            "edu_l1_p3": "Mathématiques Appliquées : Mathématiques discrètes, algèbre linéaire, logique et architecture des ordinateurs."
         }
     };
 
