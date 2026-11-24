@@ -1,161 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayoub Hemmou | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🔒 Top Secret Website</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:#0b0f14; color:#39ff14; font-family:"Courier New",monospace; text-align:center; overflow:hidden; }
+  .box { width:min(92vw,520px); padding:28px; border:2px solid #39ff14; border-radius:12px;
+         box-shadow:0 0 24px #39ff1466; background:#0b0f14; position:relative; z-index:2; }
+  h1 { font-size:1.5rem; margin:0 0 6px; }
+  .sub { color:#8aff7a; font-size:.85rem; margin-bottom:18px; }
+  #q { font-size:1.15rem; min-height:56px; margin:14px 0; color:#fff; }
+  input { width:100%; padding:12px; font:inherit; background:#000; color:#39ff14;
+          border:1px solid #39ff14; border-radius:6px; text-align:center; }
+  button { margin-top:14px; padding:12px 22px; font:inherit; font-weight:bold; cursor:pointer;
+           background:#39ff14; color:#000; border:0; border-radius:6px; }
+  #msg { margin-top:14px; min-height:24px; color:#ff4d4d; }
+  #bar { height:10px; background:#12301a; border-radius:5px; overflow:hidden; margin-top:16px; display:none; }
+  #fill { height:100%; width:0; background:#39ff14; transition:width .3s; }
+  #runner { position:fixed; padding:10px 16px; background:#ff4d4d; color:#fff; border:0; border-radius:6px;
+            font:inherit; display:none; z-index:3; }
+  .big { font-size:2.2rem; color:#fff; }
+  canvas { position:fixed; inset:0; z-index:1; opacity:.25; }
+</style>
 </head>
 <body>
+<canvas id="rain"></canvas>
 
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#about" data-key="nav_about">About</a></li>
-            <li><a href="#projects" data-key="nav_projects">Projects</a></li>
-            <li><a href="#experience" data-key="nav_experience">Experience</a></li>
-            <li><a href="#education" data-key="nav_education">Education</a></li>
-            <li><a href="#certifications" data-key="nav_certifications">Certifications</a></li>
-            <li><a href="#skills" data-key="nav_skills">Skills</a></li>
-            <li><a href="#contact" data-key="nav_contact">Contact</a></li>
-        </ul>
-        <div class="nav-controls">
-            <button id="lang-toggle" class="control-btn">EN</button>
-            <button id="dark-mode-toggle" class="control-btn">🌙 Dark</button>
-        </div>
-    </nav>
+<div class="box" id="box">
+  <h1>🔒 ACCESS DENIED</h1>
+  <div class="sub">Answer the security questions to enter.</div>
+  <div id="q"></div>
+  <input id="a" placeholder="Type your answer..." autocomplete="off">
+  <div><button id="go">Submit</button></div>
+  <div id="msg"></div>
+  <div id="bar"><div id="fill"></div></div>
+</div>
 
-    <header>
-            <img src="images/profile.png" alt="Ayoub Hemmou" class="profile-pic">
-            <div class="header-text">
-                <h1 data-key="header_name">Ayoub Hemmou</h1>
-                <p class="subtitle"><strong data-key="header_subtitle">Étudiant en Informatique | Recherche Alternance Sept 2026</strong></p>
-            </div>
-        </header>
+<button id="runner">Skip questions</button>
 
-    <main>
-        <section id="about" class="reveal">
-            <h2 data-key="nav_about">About Me</h2>
-            <div class="card">
-                <p data-key="about_text">
-                    I am currently finishing my 1st year of Math & Computer Science at Université d'Orléans. Passionate about software engineering, I am transitioning to a specialized Tech School for my 2nd year. I am actively seeking a work-study contract (Alternance) starting September 2026 to apply my coding skills (Python, C, Web) to real-world projects.
-                </p>
-            </div>
-        </section>
+<script>
+const questions = [
+  { q: "What is 2 + 2 ?", r: a => a.trim()==="4" ? "Correct... but are you SURE? Try again." : "Wrong. Obviously. Try again." },
+  { q: "What is your mother's maiden name's favorite color?", r: () => "Suspicious. Very suspicious. Next." },
+  { q: "How many legs does a normal Wi-Fi router have?", r: () => "The FBI has been notified. Next." },
+  { q: "Are you a robot? (Be honest)", r: a => /yes|oui|ايه|نعم/i.test(a) ? "Honest robot detected. Respect. Next." : "That is exactly what a robot would say. Next." },
+  { q: "Which is better: tabs or spaces?", r: () => "Both wrong. The correct answer is Vim. Next." }
+];
+let i = 0, tries = 0;
+const $ = id => document.getElementById(id);
+const showQ = () => { $("q").textContent = `Question ${i+1}/${questions.length}: ${questions[i].q}`; $("a").value=""; $("a").focus(); };
 
-        <section id="projects" class="reveal">
-            <h2 data-key="nav_projects">Projects</h2>
-            
-            <div class="card project-card">
-                <h3 data-key="proj1_title">Featured Project: Website Health Monitor</h3>
-                <p data-key="proj1_desc">An automated Python tool designed to monitor web server uptime and analyze HTTP status codes in real-time.</p>
-                <ul>
-                    <li data-key="proj1_f1"><strong>Multi-Channel Alerting:</strong> Engineered an automated notification system integrating Discord (Webhooks) and WhatsApp (Twilio API).</li>
-                    <li data-key="proj1_f2"><strong>Compliance & Architecture:</strong> Researched and implemented ARCEP regulations regarding A2P WhatsApp traffic routing.</li>
-                    <li data-key="proj1_f3"><strong>Security:</strong> Secured sensitive credentials and API keys using environment variables (.env).</li>
-                </ul>
-                <a href="https://github.com/ah-hub200/website-health-monitor" target="_blank" class="btn">View on GitHub</a>
-            </div>
+function submit() {
+  const a = $("a").value;
+  if (!a.trim()) { $("msg").textContent = "Empty answer? Bold strategy."; return; }
+  if (a.trim().toLowerCase().replace(/\s+/g, "") === "yourmom") {
+    $("msg").style.color = "#39ff14";
+    $("msg").textContent = "Secret code accepted... loading portfolio 😎";
+    setTimeout(() => { location.href = "portfolio.html"; }, 1200);
+    return;
+  }
+  $("msg").textContent = questions[i].r(a);
+  tries++;
+  if (tries % 2 === 0) { i++; tries = 0; if (i >= questions.length) return finish(); showQ(); }
+  else { $("a").value=""; }
+}
 
-            <div class="card project-card">
-                <h3 data-key="proj2_title">Project: Personal Interactive Portfolio</h3>
-                <p data-key="proj2_desc">Designed and developed this responsive website from scratch to showcase my technical background.</p>
-                <ul>
-                    <li data-key="proj2_f1"><strong>Dynamic UI:</strong> Implemented a persistent "Dark Mode" toggle using JavaScript DOM manipulation.</li>
-                    <li data-key="proj2_f2"><strong>Bilingual Architecture:</strong> Engineered a dynamic English/French translation system using a JSON dictionary.</li>
-                    <li data-key="proj2_f3"><strong>UX:</strong> Integrated smooth scroll animations using the Intersection Observer API.</li>
-                </ul>
-            </div>
-        </section>
+function finish() {
+  $("q").textContent = ""; $("a").style.display="none"; $("go").style.display="none";
+  $("msg").style.color="#39ff14"; $("msg").textContent = "Analyzing your answers...";
+  $("bar").style.display="block";
+  let p = 0;
+  const t = setInterval(() => {
+    p += Math.random()*18; if (p>99) p=99; $("fill").style.width = p+"%";
+    if (p>=99) { clearInterval(t); setTimeout(reveal, 900); }
+  }, 350);
+}
 
-        <section id="experience" class="reveal">
-            <h2 data-key="nav_experience">Experience</h2>
-            <div class="card border-left-blue">
-                <h3 data-key="exp_subtitle">Retail & Customer Operations</h3>
-                <p><strong>Auchan, KFC, Carrefour</strong> | 2023 - <span data-key="edu_present">Present</span></p>
-                <ul>
-                    <li data-key="exp_p1"><strong>Rigor & Precision:</strong> Managed high-volume financial transactions and executed high-accuracy inventory scanning.</li>
-                    <li data-key="exp_p2"><strong>Responsibility:</strong> Entrusted with store opening/closing procedures and high-paced production management.</li>
-                    <li data-key="exp_p3"><strong>Soft Skills:</strong> Demonstrated strong stress management, customer relations, and teamwork in demanding environments.</li>
-                </ul>
-            </div>
-        </section>
+function reveal() {
+  $("box").innerHTML = '<div class="big">🎉 ACCESS GRANTED 🎉</div>' +
+    '<p>...just kidding.</p><p>There is nothing here.</p><p>You just answered 10 questions for nothing. 😎</p>' +
+    '<button onclick="location.reload()">Try again</button>';
+  $("runner").style.display = "none";
+}
 
-        <section id="education" class="reveal">
-            <h2 data-key="nav_education">Education</h2>
-            
-            <div class="card border-left-blue">
-                <h3 data-key="edu_l2_title">2nd Year Computer Science (Seeking Alternance)</h3>
-                <p><strong data-key="edu_l2_school">Private Tech School (Admission in Progress)</strong> | Sept 2026 - 2027</p>
-                <ul>
-                    <li data-key="edu_l2_p1">Preparation for a Bac+2 equivalent degree (RNCP Level 5).</li>
-                    <li data-key="edu_l2_p2">Actively seeking a work-study contract (Alternance).</li>
-                </ul>
-            </div>
+$("go").onclick = submit;
+$("a").addEventListener("keydown", e => { if (e.key==="Enter") submit(); });
 
-            <div class="card">
-                <h3 data-key="edu_l1_title">1st Year Math & Computer Science</h3>
-                <p><strong data-key="edu_l1_school">Université d'Orléans</strong> | 2025 - 2026</p>
-                <ul>
-                    <li data-key="edu_l1_p1">Track: Successful transition from a Math-Info portal to a CS specialization.</li>
-                    <li data-key="edu_l1_p2">Core IT: Algorithms, Data Structures, Python, C Language, Databases (SQL), and UNIX.</li>
-                    <li data-key="edu_l1_p3">Applied Math: Discrete Mathematics, Linear Algebra, Logic, and Computer Architecture.</li>
-                </ul>
-            </div>
-        </section>
-       <section id="certifications" class="reveal">
-            <h2 data-key="nav_certifications">Certifications</h2>
-            <div class="card border-left-blue">
-                <h3 data-key="cert_title">Google IT Automation with Python</h3>
-                <p><strong>Coursera</strong> | <span data-key="cert_date">April 2026</span></p>
-                <ul>
-                    <li data-key="cert_p1"><strong>Crash Course on Python:</strong> Mastered Object-Oriented Programming (OOP), complex data structures, and file manipulation.</li>
-                    <li data-key="cert_p2"><strong>Validation:</strong> Official Google certification proving production-ready Python skills.</li>
-                </ul>
-                <br>
-                <a href="https://www.coursera.org/account/accomplishments/verify/NNURF240771C" target="_blank" class="btn" data-key="cert_btn">View Certificate</a>
-            </div>
-        </section>
-        <section id="skills" class="reveal">
-            <h2 data-key="nav_skills">Skills</h2>
-            <div class="skills-grid">
-                <div class="card skill-category">
-                    <h3 data-key="skill_sys_title">🖥️ System & Architecture</h3>
-                    <ul>
-                        <li data-key="skill_sys_1"><strong>Linux/UNIX:</strong> Bash scripting, CLI tools, File permissions</li>
-                        <li data-key="skill_sys_2"><strong>Hardware:</strong> Computer architecture, Boolean logic, Binary arithmetic</li>
-                    </ul>
-                </div>
-                <div class="card skill-category">
-                    <h3 data-key="skill_data_title">💾 Data & Databases</h3>
-                    <ul>
-                        <li data-key="skill_data_1"><strong>SQL:</strong> Relational database design, Complex queries</li>
-                        <li data-key="skill_data_2"><strong>Modeling:</strong> Entity-Relationship models (MCD/MLD)</li>
-                    </ul>
-                </div>
-                <div class="card skill-category">
-                    <h3 data-key="skill_prog_title">⚙️ Programming & Logic</h3>
-                    <ul>
-                        <li data-key="skill_prog_1"><strong>Languages:</strong> Python (Google Certified), C, HTML/CSS/JS</li>
-                        <li data-key="skill_prog_2"><strong>Core CS:</strong> Algorithm design, Data structures, Graph theory</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+// The "Skip" button runs away from your mouse / finger
+const r = $("runner"); r.style.display = "block";
+function jump() {
+  r.style.left = Math.random()*(innerWidth-r.offsetWidth-10) + "px";
+  r.style.top  = Math.random()*(innerHeight-r.offsetHeight-10) + "px";
+}
+jump();
+["mouseover","touchstart","click"].forEach(ev => r.addEventListener(ev, e => { e.preventDefault(); jump(); }));
 
-        <section id="contact" class="reveal">
-            <h2 data-key="nav_contact">Contact</h2>
-            <div class="card text-center">
-                <p>📧 <strong data-key="contact_email">Email:</strong> <a href="mailto:hemmouayoub50@gmail.com">hemmouayoub50@gmail.com</a></p>
-                <p>📞 <strong data-key="contact_phone">Phone:</strong> <a href="tel:+33627390976">06 27 39 09 76</a></p>
-                <p>💻 <strong>GitHub:</strong> <a href="https://github.com/ah-hub200" target="_blank">ah-hub200</a></p>
-            </div>
-        </section>
-    </main>
+// Matrix rain background
+const c = $("rain"), x = c.getContext("2d");
+function size(){ c.width=innerWidth; c.height=innerHeight; }
+size(); addEventListener("resize", size);
+const cols = () => Math.floor(c.width/16);
+let drops = Array(cols()).fill(1);
+setInterval(() => {
+  x.fillStyle="rgba(11,15,20,.12)"; x.fillRect(0,0,c.width,c.height);
+  x.fillStyle="#39ff14"; x.font="16px monospace";
+  if (drops.length!==cols()) drops = Array(cols()).fill(1);
+  drops.forEach((y,k) => {
+    x.fillText(String.fromCharCode(0x30A0+Math.random()*96), k*16, y*16);
+    drops[k] = (y*16>c.height && Math.random()>.975) ? 0 : y+1;
+  });
+}, 50);
 
-    <footer>
-        <p>&copy; 2026 Ayoub Hemmou</p>
-    </footer>
-
-    <script src="script.js"></script>
+showQ();
+</script>
 </body>
 </html>
